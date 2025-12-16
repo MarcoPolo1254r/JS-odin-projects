@@ -25,15 +25,15 @@ function getResult(){
     if ( userChoice === "rock" && (computerChoice === "scissor") || 
         userChoice === "paper" && (computerChoice === "rock") ||
         userChoice === "scissor" && (computerChoice === "paper")) {
-            return console.log("you Won")
+            return alert("Opponed choosed " + computerChoice + " ,you Won!!")
         }
-    if (userChoice === computerChoice){console.log ("It is a Draw")
+    if (userChoice === computerChoice){alert("Opponed choosed " + computerChoice + " ,it is a Draw")
 
     }
     if (userChoice === "scissor" && (computerChoice === "rock") || 
         userChoice === "rock" && (computerChoice === "paper") ||
         userChoice === "paper" && (computerChoice === "scissor")){
-            return console.log ("you lost")
+            return alert("Opponed choosed " + computerChoice + ", you lost")
         }
     return null;
 }
