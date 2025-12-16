@@ -1,3 +1,6 @@
+let wins = 0;
+let losses = 0;
+let draws = 0;
 
 function getComputerChoice(){
     const choice = ["rock","paper","scissor"];
@@ -19,23 +22,50 @@ function getUserChoice () {
     return null;
 }
 
-function getResult(){
-    let userChoice = getUserChoice();
-    let computerChoice = getComputerChoice();
+function getResult(userChoice,computerChoice){
+    
     if ( userChoice === "rock" && (computerChoice === "scissor") || 
         userChoice === "paper" && (computerChoice === "rock") ||
         userChoice === "scissor" && (computerChoice === "paper")) {
-            return alert("Opponed choosed " + computerChoice + " ,you Won!!")
+            return "win"          
         }
-    if (userChoice === computerChoice){alert("Opponed choosed " + computerChoice + " ,it is a Draw")
-
+    if (userChoice === computerChoice){
+        return "draw"
     }
-    if (userChoice === "scissor" && (computerChoice === "rock") || 
-        userChoice === "rock" && (computerChoice === "paper") ||
-        userChoice === "paper" && (computerChoice === "scissor")){
-            return alert("Opponed choosed " + computerChoice + ", you lost")
-        }
-    return null;
+    return "loss"
 }
 
-getResult()
+function playGame(){
+    let playing = true;
+
+    while(playing === true){
+
+        let userChoice = getUserChoice();
+        if (userChoice === null) {
+            alert("Invalid input. Please try again.");
+        continue;
+        };
+
+        const computerChoice = getComputerChoice();
+
+        const result = getResult(userChoice,computerChoice);
+        
+        if(result === "win") wins++;
+        else if (result === "loss") losses++;
+        else draws++;
+
+    alert(`
+        You choose: ${userChoice}
+        Opponent chose: ${computerChoice}
+        Result: ${result}
+        Score:
+            Wins: ${wins}
+            Losses: ${losses}
+            Draws: ${draws}`
+        );
+
+        playing = confirm("Do you want o keep playing?")
+    }
+}
+
+playGame()
