@@ -35,15 +35,28 @@ function getResult(userChoice,computerChoice){
     return "loss"
 }
 
-function playGame(){
-    let playing = true;
+function findWinner (wins,losses){
+    if(wins>losses) {alert(`You Won!
+        SCORE:
+            Wins: ${wins}
+            Losses: ${losses}
+            Draws: ${draws}`)}
+    else{alert(`You lost!
+        SCORE:
+            Wins: ${wins}
+            Losses: ${losses}
+            Draws: ${draws}`)        
+    } 
+}
 
-    while(playing === true){
+function playGame(){
+    let rounds = 1;
+    alert("RULES: Rock Paper Scissors is played with three possible choices: rock, paper, and scissors. Rock beats scissors, scissors beats paper, and paper beats rock. If both the player and the computer choose the same option, the round ends in a draw. Each round compares one choice from the player and one from the computer, and the winner of the round earns one point who has the most poinsts at the end of 5 rounds wins. NOTE: if you input anything other than rock paper or scissors the game will close")
+    while(rounds <= 5){
 
         let userChoice = getUserChoice();
         if (userChoice === null) {
-            alert("Invalid input. Please try again.");
-        continue;
+            break;
         };
 
         const computerChoice = getComputerChoice();
@@ -55,6 +68,7 @@ function playGame(){
         else draws++;
 
     alert(`
+        ROUND ${rounds}
         You choose: ${userChoice}
         Opponent chose: ${computerChoice}
         Result: ${result}
@@ -63,8 +77,9 @@ function playGame(){
             Losses: ${losses}
             Draws: ${draws}`
         );
-
-        playing = confirm("Do you want o keep playing?")
+        if(rounds === 5){findWinner(wins,losses)}
+        rounds++
+        
     }
 }
 

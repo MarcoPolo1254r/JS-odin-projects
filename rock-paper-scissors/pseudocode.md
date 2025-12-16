@@ -12,7 +12,4 @@ After proceed the other oponent(computer) will display a random value.
 Compare both values and see who if the user wins of loses.
 Dispay a message according to the result
 User Can choose to play again if he press the button "play again".
-
----- Optional ----
-
-Record and show the score of the games.
+Record and show the score of the games in each turn.
