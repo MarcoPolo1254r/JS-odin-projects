@@ -6,6 +6,8 @@ let rounds = 1;
 const options = document.querySelectorAll('li');
 const roundCount = document.querySelector('#round');
 const totalScore = document.querySelector('.score');
+const userPlay = document.querySelector('#player-choice');
+const computerPlay = document.querySelector('.computer-choice')
 
 
 
@@ -54,6 +56,16 @@ function findWinner (wins,losses){
 function playGame(choice){
 
     let userChoice = choice;
+
+    
+    if (userChoice === 'rock'){
+        const newImg = document.createElement('img');        
+        newImg.src = "./imgs/rock.png";
+        newImg.alt = 'Image of a rock';
+        newImg.width = 25;
+        newImg.height = 25;
+        userPlay.appendChild(newImg)
+    }
         
     const computerChoice = getComputerChoice();
 
@@ -64,20 +76,15 @@ function playGame(choice){
     else draws++;
 
     roundCount.textContent = 'Round:' + rounds;
-    totalScore.textContent = 'Wins: ' +wins + ' X ' + ' Losses: ' + losses
+    totalScore.textContent = 'Wins: ' +wins + ' X ' + ' Losses: ' + losses + 'Draws: ' + draws
 
-    // alert(`
-    //     ROUND ${rounds}
-    //     You choose: ${userChoice}
-    //     Opponent chose: ${computerChoice}
-    //     Result: ${result}
-    //     Score:
-    //         Wins: ${wins}
-    //         Losses: ${losses}
-    //         Draws: ${draws}`
-    //     );
-
-    if(rounds === 5){findWinner(wins,losses)}
+    if(rounds === 5){
+        findWinner(wins,losses);        
+        rounds = 0;
+        wins = 0;
+        losses = 0;
+        draws = 0;        
+    }
     rounds++      
     
 }
