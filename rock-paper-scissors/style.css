@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body {
+    height: 100%;    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.top-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.choice-list {
+    display: flex;
+    list-style-type: none;
+}
+
+.choice-list li {
+    margin: 5px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 3px;
+    cursor: auto;
+}
+
+div{
+    border: 3px solid red
+}
