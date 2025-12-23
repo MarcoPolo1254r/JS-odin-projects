@@ -53,23 +53,42 @@ function findWinner (wins,losses){
     } 
 }
 
-function playGame(choice){
+function updateResult (userChoice, elementId){
 
-    let userChoice = choice;
+    const newImg = document.querySelector(elementId);
 
-    
-    if (userChoice === 'rock'){
-        const newImg = document.createElement('img');        
-        newImg.src = "./imgs/rock.png";
-        newImg.alt = 'Image of a rock';
-        newImg.width = 25;
-        newImg.height = 25;
-        userPlay.appendChild(newImg)
+    switch (userChoice)
+        {
+            case "rock":             
+                newImg.src = "./imgs/rock.png";
+                newImg.alt = 'Image of a rock';
+                newImg.width = 25;
+                newImg.height = 25;
+                break;
+
+            case "paper":
+                newImg.src = "./imgs/paper.png";
+                newImg.alt = 'Image of a paper';
+                newImg.width = 25;
+                newImg.height = 25;
+                break;
+
+            case "scissor":
+                newImg.src = "./imgs/scissor.png";
+                newImg.alt = 'Image of a scissor';
+                newImg.width = 25;
+                newImg.height = 25;
+                break;
     }
-        
-    const computerChoice = getComputerChoice();
+}
 
-    const result = getResult(userChoice,computerChoice);
+function playGame(playerChoice){
+
+    updateResult(playerChoice, '#img-player-choice');
+    const computerChoice = getComputerChoice();
+    updateResult(computerChoice, '#img-computer-choice');    
+
+    const result = getResult(playerChoice,computerChoice);
         
     if(result === "win") wins++;
     else if (result === "loss") losses++;
